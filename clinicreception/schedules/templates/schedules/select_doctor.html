@@ -1,0 +1,17 @@
+{% extends 'admin/admin_main.html' %}
+
+{% block title %}Вибір лікаря{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mt-5 mb-4">Вибір лікаря для перегляду графіка</h1>
+    <div class="d-flex justify-content-center">
+        <form method="post" class="w-50">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.doctor.label_tag }}
+                {{ form.doctor }}
+            </div>
+            <button type="submit" class="btn btn-primary">Переглянути графік</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'admin/admin_main.html' %}
+
+{%block title %}Лікарі{% endblock %}
+
+{%block content %}
+    <h1 class="text-center mt-5 mb-4">Лікарі</h1>
+    <a href="{% url 'doctor_create' %}" class="btn btn-success d-block mx-auto mb-3" style="width: 200px;">Створити лікаря</a>
+    <!--<a href="" class="btn btn-info d-block mx-auto mb-3" style="width: 200px;">Редагування</a>-->
+    <a href="{% url 'doctor_delete' %}" class="btn btn-danger d-block mx-auto mb-3" style="width: 200px;">Звільнити</a>
+    <form method="get" class="form-inline mb-3">
+             {% for field in form %}
+                        <div class="form-group">
+                            <label>{{ field.label }}</label>
+                            {% if field.errors %}
+                                <span class="text-danger">{{ field.errors|join:", " }}</span>
+                            {% endif %}
+                                {{ field }}
+                            {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                            {% endif %}
+                        </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Фільтрувати</button>
+    </form>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ПІБ</th>
+                    <th>Посада</th>
+                    <th>Спеціалізація</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doctor in doctors %}
+                    <tr>
+                        <td>{{ doctor.fullname }}</td>
+                        <td>{{ doctor.job_title }}</td>
+                        <td>{{ doctor.specialization}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

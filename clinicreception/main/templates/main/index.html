@@ -1,0 +1,23 @@
+{% extends 'main/layout.html' %}
+
+{%block title %}Головна сторінка{% endblock %}
+
+{%block content %}
+    <div class="container mt-5">
+        <section id="welcome" class="text-center bg-light p-5 rounded shadow">
+            <h1 class="mb-4">Ласкаво просимо до нашої поліклініки</h1>
+            <p class="lead">Ми раді вітати вас у нашій поліклініці. Тут ви можете отримати інформацію про послуги та ознайомитись з нашими фахівцями.</p>
+            <!--<a href="{% url 'registrator_main' %}" class="btn btn-primary mt-3">Медичний реєстратор</a>
+            <a href="{% url 'medcontroller_main' %}" class="btn btn-primary mt-3">Медконтролер</a>
+            <a href="{% url 'admin_main' %}" class="btn btn-primary mt-3">Адміністратор</a>
+            <a href="{% url 'statistic_main' %}" class="btn btn-primary mt-3">Аналітик</a>
+            <a href="{% url 'doctor_main' %}" class="btn btn-primary mt-3">Доктор</a>
+            <a href="{% url 'head_main' %}" class="btn btn-primary mt-3">Завідуючий</a>-->
+        </section>
+
+        <section id="info" class="mt-5">
+            <h2 class="text-center mb-4">Інформація про поліклініку</h2>
+            <p class="text-justify">Наша поліклініка пропонує широкий спектр медичних послуг. Ми прагнемо забезпечити високу якість обслуговування та комфорт для наших пацієнтів.</p>
+        </section>
+    </div>
+{% endblock %}

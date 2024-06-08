@@ -1,0 +1,46 @@
+{% extends 'head/head_main.html' %}
+
+{% block title %}Працівники реєстратури{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mt-5 mb-4">Працівники реєстратури</h1>
+    <a href="{% url 'receptionist_create' %}" class="btn btn-success d-block mx-auto mb-3" style="width: 200px;">Створити працівника</a>
+    <a href="{% url 'receptionist_delete' %}" class="btn btn-danger d-block mx-auto mb-3" style="width: 200px;">Звільнити працівника</a>
+    <div class="container mt-4">
+           <form method="get" class="form-inline mb-3">
+             {% for field in form %}
+                        <div class="form-group">
+                            <label>{{ field.label }}</label>
+                            {% if field.errors %}
+                                <span class="text-danger">{{ field.errors|join:", " }}</span>
+                            {% endif %}
+                                {{ field }}
+                            {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                            {% endif %}
+                        </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Фільтрувати</button>
+    </form>
+
+      <div class="table-responsive">
+          <h2 class="text-center">Список працівників:</h2>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ПІБ</th>
+                    <th>Посада</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for receptionist in receptionists %}
+                            <tr>
+                                <td>{{ receptionist.full_name }}</td>
+                                <td>{{ receptionist.job_title }}</td>
+                            </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+      </div>
+    </div>
+{% endblock %}

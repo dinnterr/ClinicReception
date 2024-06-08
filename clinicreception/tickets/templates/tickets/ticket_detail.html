@@ -1,0 +1,27 @@
+{% extends 'registrator/registrator_main.html' %}
+
+{% block title %}Деталі талону{% endblock %}
+
+{% block content %}
+     <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card w-50 shadow p-4">
+            <h1 class="text-center mb-4">Деталі талону</h1>
+            <div class="text-success">
+                        {{ message }}
+            </div>
+            <div>
+                <p><strong>№ талону:</strong> {{ ticket.ticket_id }}</p>
+                <p><strong>Лікар:</strong> {{ ticket.doctor }}</p>
+                <p><strong>Тип процедури:</strong> {{ ticket.examination_type }}</p>
+                <p><strong>Пацієнт:</strong> {{ ticket.patient }}</p>
+                <p><strong>Дата талону:</strong> {{ ticket.ticket_date }}</p>
+                <p><strong>Час талону:</strong> {{ ticket.ticket_time }}</p>
+                <p><strong>Статус проведення процедури:</strong> {{ ticket.status }}</p>
+                <p><strong>Статус карти:</strong> {{ ticket.card_status }}</p>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'ticket_list' %}" class="btn btn-primary">Назад до списку</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

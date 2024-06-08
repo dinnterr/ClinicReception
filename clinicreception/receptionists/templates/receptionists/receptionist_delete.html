@@ -1,0 +1,28 @@
+{% extends 'head/head_main.html' %}
+
+{% block title %}Звільнення працівника{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card w-50 shadow">
+            <div class="card-header text-center">
+                <h1>Звільнення  працівника</h1>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {% if error_message %}
+                    <div class="alert alert-danger">
+                        {{ error_message }}
+                    </div>
+                    {% endif %}
+                    <div class="d-flex justify-content-between mt-3">
+                        <button type="submit" class="btn btn-danger">Звільнити</button>
+                        <a href="{% url 'receptionists_list' %}" class="btn btn-secondary">Відмінити</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

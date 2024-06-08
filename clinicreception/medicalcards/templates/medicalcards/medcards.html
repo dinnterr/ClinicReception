@@ -1,0 +1,42 @@
+{% extends 'registrator/registrator_main.html' %}
+
+{%block title %}Медичні карти{% endblock %}
+
+{%block content %}
+    <h1 class="text-center mt-5 mb-4">Медичні карти</h1>
+    <a href="{% url 'medcard_create' %}" class="btn btn-success d-block mx-auto mb-3" style="width: 200px;">Створити нову медичну карту</a>
+    <a href="{% url 'search_medical_card' %}" class="btn btn-info btn-sm d-block mx-auto mb-3" style="width: 400px;">Перейти до пошуку за №</a>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>№ карти</th>
+                    <th>Пацієнт</th>
+                    <th>Стать</th>
+                    <th>Дата народження</th>
+                    <th>Адреса</th>
+                    <th>Номер телефону</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for medcard in medcards %}
+                    <tr>
+                        <td>{{ medcard.medcard_id }}</td>
+                        <td>{{ medcard.patient_fullname }}</td>
+                        <td>{{ medcard.sex }}</td>
+                        <td>{{ medcard.birth_date }}</td>
+                        <td>{{ medcard.address }}</td>
+                        <td>{{ medcard.phone_number }}</td>
+                        <td class="text-right"><a href="{% url 'medcard_detail' medcard.medcard_id  %}" class="btn btn-info btn-sm">Деталі</a></td>
+                        <td><a href="{% url 'medcard_edit' medcard.medcard_id %}" class="btn btn-warning btn-sm">Редагувати</a></td>
+                        <td><a href="{% url 'medcard_delete' medcard.medcard_id %}" class="btn btn-danger btn-sm">Видалити</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

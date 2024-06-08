@@ -1,0 +1,25 @@
+body{
+    background: powderblue;
+    overflow-x: hidden;
+}
+
+aside {
+    border-right: 1px solid #ddd;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+.nav-link {
+    color: #333;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #000cb3;
+    text-decoration: none;
+}

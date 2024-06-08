@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+{%block title %}Вийти{% endblock %}
+
+{% block content %}
+     <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card text-center p-4">
+            <h2 class="mb-4">Вийти</h2>
+            <form method="post" action="{% url 'logout' %}">
+                 <div class="text-danger">
+                        {{ error }}
+                    </div>
+                 {% csrf_token %}
+                <button type="submit" class="btn btn-primary btn-block">Вийти</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

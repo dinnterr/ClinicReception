@@ -1,0 +1,37 @@
+{% extends 'admin/admin_main.html' %}
+
+{% block title %}Реєстрація лікаря{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card w-50 shadow">
+            <div class="card-header text-center">
+                <h1>Створення лікаря</h1>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                     {% for field in form %}
+                        <div class="form-group">
+                            <label>{{ field.label }}</label>
+                            {% if field.errors %}
+                                <span class="text-danger">{{ field.errors|join:", " }}</span>
+                            {% endif %}
+                                {{ field }}
+                            {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    <div class="text-danger">
+                        {{ error_message }}
+                    </div>
+                    <div class="d-flex justify-content-between mt-3">
+                        <button type="submit" class="btn btn-success">Підтвердити</button>
+                        <a href="{% url 'doctor_list' %}" class="btn btn-secondary">Відмінити</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

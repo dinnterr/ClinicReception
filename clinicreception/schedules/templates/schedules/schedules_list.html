@@ -1,0 +1,11 @@
+{% extends 'admin/admin_main.html' %}
+
+{% block title %}Розклади{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mt-5 mb-4">Розклади</h1>
+    <a href="{% url 'select_doctor' %}" class="btn btn-danger d-block mx-auto mb-3" style="width: 200px;">Переглянути розклад</a>
+    <a href="{% url 'schedules_create' %}" class="btn btn-success d-block mx-auto mb-3" style="width: 200px;">Створити розклад</a>
+    <a href="" class="btn btn-info d-block mx-auto mb-3" style="width: 200px;">Редагування</a>
+    <a href="" class="btn btn-danger d-block mx-auto mb-3" style="width: 200px;">Видалити розклад</a>
+{% endblock %}

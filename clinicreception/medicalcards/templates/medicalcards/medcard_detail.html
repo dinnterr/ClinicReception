@@ -1,0 +1,30 @@
+{% extends 'registrator/registrator_main.html' %}
+
+{% block title %}Деталі медичної карти{% endblock %}
+
+{% block content %}
+     <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card w-50 shadow p-4">
+            <h1 class="text-center mb-4">Деталі медичної карти</h1>
+            <div class="text-success">
+                        {{ message }}
+            </div>
+            <div>
+                {% if show_all_fields %}
+                    <p><strong>№ медичної картки:</strong> {{ medcard.medcard_id }}</p>
+                    <p><strong>Статус (місцезнаходження карти) :</strong> {{ medcard.status }}</p>
+                {% endif %}
+                <p><strong>Повне ім'я пацієнта:</strong> {{ medcard.patient_fullname }} {{ medcard.0}}</p>
+                <p><strong>Стать:</strong> {{ medcard.sex }} {{ medcard.1}}</p>
+                <p><strong>Дата народження:</strong> {{ medcard.birth_date }} {{ medcard.2}}</p>
+                <p><strong>Адреса:</strong> {{ medcard.address }} {{ medcard.3}}</p>
+                <p><strong>Номер телефону:</strong> {{ medcard.phone_number }} {{ medcard.4}}</p>
+                <p><strong>Посада на роботі:</strong> {{ medcard.workplace_position }} {{ medcard.5}}</p>
+                <p><strong>Привілеї пацієнта:</strong> {{ medcard.patient_privileges }} {{ medcard.6}}</p>
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'medcards_list' %}" class="btn btn-primary">Назад до списку</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

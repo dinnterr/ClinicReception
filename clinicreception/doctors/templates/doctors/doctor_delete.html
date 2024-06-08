@@ -1,0 +1,20 @@
+{% extends 'admin/admin_main.html' %}
+
+{% block title %}Звільнення лікаря{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card text-center p-4">
+            <h1 class="mb-4">Звільнення лікаря</h1>
+            <form method="POST" style="display: inline;">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Звільнити" class="btn btn-danger">
+                <a href="{% url 'doctor_list' %}" class="btn btn-secondary ml-2">Відмінити</a>
+                <div class="text-danger">
+                    {{ error_message }}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

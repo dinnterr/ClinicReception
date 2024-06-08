@@ -1,0 +1,8 @@
+{% extends 'admin/admin_main.html' %}
+{% block title %}Успіх{% endblock %}
+{% block content %}
+<div class="alert alert-success" role="alert">
+    {{ message }}
+</div>
+<a href="{% url 'doctor_list' %}" class="btn btn-primary">Повернутися до списку лікарів</a>
+{% endblock %}

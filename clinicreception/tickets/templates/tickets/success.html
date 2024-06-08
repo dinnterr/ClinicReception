@@ -1,0 +1,8 @@
+{% extends 'registrator/registrator_main.html' %}
+{% block title %}Успішне створення{% endblock %}
+{% block content %}
+<div class="alert alert-success" role="alert">
+    {{ message }}
+</div>
+<a href="{% url 'ticket_list' %}" class="btn btn-primary">Повернутися до списку талонів</a>
+{% endblock %}

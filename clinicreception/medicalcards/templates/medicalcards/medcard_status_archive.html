@@ -1,0 +1,26 @@
+{% extends 'cardcontroller/cardcontroller_main.html' %}
+
+{% block title %}Архівування медичної картки{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card w-50 shadow p-4">
+        <h1 class="text-center mb-4">Архівування медичної картки </h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Номер медичної карти:</label>
+                {{ form.medcard_id }}
+            </div>
+            <div class="form-group">
+                <label>Новий статус місцезнаходження медичної карти:</label>
+                {{ form.new_status }}
+            </div>
+            <div class="d-flex justify-content-between mt-3">
+                <button type="submit" class="btn btn-primary">Архівувати</button>
+                <a href="{% url 'edit_status_medcard' %}" class="btn btn-secondary">Назад до списку</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

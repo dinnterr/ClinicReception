@@ -1,0 +1,31 @@
+{% extends 'registrator/registrator_main.html' %}
+
+{% block title %}Перепланування талону{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card w-50 shadow">
+            <div class="card-header text-center">
+                <h1>Перепланування талону №{{ ticket.ticket_id }}</h1>
+            </div>
+            <div class="card-body">
+                <p><strong>Лікар:</strong> {{ ticket.doctor }}</p>
+                <p><strong>Тип процедури:</strong> {{ ticket.examination_type }}</p>
+                <p><strong>Пацієнт:</strong> {{ ticket.patient }}</p>
+                <p><strong>Статус проведення процедури:</strong> {{ ticket.status }}</p>
+                <p><strong>Статус карти:</strong> {{ ticket.card_status }}</p>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="text-danger">
+                        {{ error_message }}
+                    </div>
+                    <div class="d-flex justify-content-between mt-3">
+                        <button type="submit" class="btn btn-primary">Зберегти</button>
+                        <a href="{% url 'ticket_list' %}" class="btn btn-secondary">Відмінити</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

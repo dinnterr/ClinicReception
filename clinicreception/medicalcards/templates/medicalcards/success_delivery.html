@@ -1,0 +1,8 @@
+{% extends 'cardcontroller/cardcontroller_main.html' %}
+{% block title %}Успіх{% endblock %}
+{% block content %}
+<div class="alert alert-success" role="alert">
+    {{ message }}
+</div>
+<a href="{% url 'edit_status_medcard' %}" class="btn btn-primary">Повернутися до списку пацієнтів</a>
+{% endblock %}

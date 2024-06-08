@@ -1,0 +1,32 @@
+{% extends 'admin/admin_main.html' %}
+
+{% block title %}Графік лікаря{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mt-5 mb-4">Графік лікаря (ID: {{  doctor_name }})</h1>
+    <a href="" class="btn btn-success d-block mx-auto mb-3" style="width: 200px;">Створити розклад</a>
+    <a href="" class="btn btn-info d-block mx-auto mb-3" style="width: 200px;">Редагування</a>
+    <a href="" class="btn btn-danger d-block mx-auto mb-3" style="width: 200px;">Видалити розклад</a>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>День для візитів</th>
+                    <th>Час початку</th>
+                    <th>Час завершення</th>
+                    <th>Кабінет</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in schedule %}
+                    <tr>
+                        <td>{{ s.day_for_visits }}</td>
+                        <td>{{ s.start_time }}</td>
+                        <td>{{ s.end_time }}</td>
+                        <td>{{ s.cabinet }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'head/head_main.html' %}
+
+{% block title %}Вибрати працівника{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Вибрати працівника</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Вибрати</button>
+    </form>
+</div>
+{% endblock %}

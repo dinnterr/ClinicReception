@@ -1,0 +1,87 @@
+{% extends 'statistic/statistic_main.html' %}
+
+{% block title %}Статистика лікарів{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mt-5 mb-4">Статистика лікарів</h1>
+    <!-- Форма для получения статистики посещений пациентов -->
+   <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+       <div class="card w-50 shadow">
+           <div class="card-body container mt-4">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form method="post" class="mt-3">
+                        {% csrf_token %}
+                        {{ form_patient_visits.as_p }}
+                        <div class="text-center mt-3">
+                            <button type="submit" name="patient_visits_button" class="btn btn-primary">
+                                Отримати кількість пацієнтів у відвідуваннях</button>
+                             <button type="submit" name="count_visits_button" class="btn btn-secondary">
+                                 Отримати кількість відвідувань
+                             </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+     </div>
+   </div>
+    <!-- Отображение результатов -->
+    {% if patient_visits_stats %}
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h2 class="text-center">Статистика за кількістю пацієнтів:</h2>
+                <table class="table table-bordered table-striped mt-3">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ПІБ лікаря</th>
+                            <th>Спеціалізація</th>
+                            <th>Кількість пацієнтів</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for stat in patient_visits_stats %}
+                            <tr>
+                                <td>{{ stat.0 }}</td>
+                                <td>{{ stat.1 }}</td>
+                                <td>{{ stat.2 }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+  {% if count_visits_stats %}
+        <div class="container mt-4">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h2 class="text-center">Статистика за кількістю відвідувань:</h2>
+                    <table class="table table-bordered table-striped mt-3">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ПІБ лікаря</th>
+                                <th>Спеціалізація</th>
+                                <th>Кількість відвідувань</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for stat in count_visits_stats %}
+                                <tr>
+                                    <td>{{ stat.0 }}</td>
+                                    <td>{{ stat.1 }}</td>
+                                    <td>{{ stat.2 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

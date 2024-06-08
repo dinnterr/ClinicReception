@@ -1,0 +1,40 @@
+{% extends 'registrator/registrator_main.html' %}
+
+{%block title %}Талони{% endblock %}
+
+{%block content %}
+    <h1 class="text-center mt-5 mb-4">Талони</h1>
+    <a href="{% url 'ticket_create' %}" class="btn btn-success d-block mx-auto mb-3" style="width: 200px;">Створити новий талон</a>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>№ талона</th>
+                    <th>Дата</th>
+                    <th>Час</th>
+                    <th>Лікар</th>
+                    <th>№ медкарти пацієнта</th>
+                    <th>Тип процедури</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticket in tickets %}
+                    <tr>
+                        <td>{{ ticket.ticket_id }}</td>
+                        <td>{{ ticket.ticket_date }}</td>
+                        <td>{{ ticket.ticket_time }}</td>
+                        <td>{{ ticket.doctor.full_name }}</td>
+                        <td>{{ ticket.patient.medcard_id }}</td>
+                        <td>{{ ticket.examination_type.examination_type|slice:":90" }} ...</td>
+                        <td class="text-right"><a href="{% url 'ticket_detail' ticket.ticket_id %}" class="btn btn-info btn-sm">Деталі</a></td>
+                        <td><a href="{% url 'ticket_edit' ticket.ticket_id %}" class="btn btn-warning btn-sm">Перепланування талону</a></td>
+                        <td><a href="{% url 'ticket_delete' ticket.ticket_id %}" class="btn btn-danger btn-sm">Видалити</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
